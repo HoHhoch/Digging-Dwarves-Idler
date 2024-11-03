@@ -2,11 +2,46 @@
 <html lang="en">
     <head>
         <title>Dwarven Diggers</title>
-        <script type="module" src="./components/Mountain.js"></script>
+        <script type="module" src="./components/classes/Mountain.js"></script>
         <script type="moudle" src="./components/data.js"></script>
         <script type="module" src="./templates/mountainView.js"></script>
         <script type="module" src="./components/events/addEvents.js"></script>
     </head>
     <body>
+        <div class="Div_Root">
+            <div class="Navigation_Bar">
+                <div class="N1"></div>
+                <div class="N2"></div>
+                <div class="N3"></div>
+                <div class="N4_Settings">
+                    <button class="Settings_Button" type="button" value="Settings">Settings</button>
+                </div>
+            </div>
+            <div id="Ore_Counter_Container">
+                <h1>Current Ore: <span id="Current_Ore"></span></h1>
+            </div>
+            <div class="Building_Wrapper"></div>
+            <div class="Tags_Wrapper">
+                <div class="B1_Mountain">
+                    <button class="Mountain_Tag" type="button" value="Mountain">Mountain</button>
+                </div>
+                <div class="B2_Blacksmith">
+                    <button class="Blacksmith_Tag" type="button" value="Blacksmth">Blacksmith</button>
+                </div>
+                <p>Building Tags go here.</p>
+            </div>
+            <div class="Village_Wrapper"><p>Village View will go here.</p></div>
+            <div class="Upgrade_Wrapper">
+                <div class="Mountain_Upgrade_Wrapper">
+                    <div class="Mountain_Upgrades">
+                        <button class="Miner_Upgrade" 
+                                type="button" 
+                                value="Hire Miner"
+                                id="Miner_Button">Hire Miner: <span id="Miner_Cost"></span>
+                        </button>
+                    </div>
+                </div><p>Upgrades go here.</p>
+            </div>
+        </div>
     </body>
 </html>

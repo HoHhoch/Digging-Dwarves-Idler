@@ -1,3 +1,5 @@
+import globals from "../data.js"
+
 class Mountain {
     constructor(
     src,
@@ -12,11 +14,9 @@ class Mountain {
         this.threshold = 10,
         this.clicks = clicks,
         this.mined = false,
-        this.totalOre = 0,
-        this.currentOre = 0,
         this.oreMultiplier = 1.0
     }
-    clicked(){
+    clicked = () =>{
         this.clicks += 1
         this.totalClicks += 1
         console.log("Clicked!", this.totalClicks)
@@ -24,15 +24,16 @@ class Mountain {
         if (this.clicks >= this.threshold){
             this.clicks -= this.threshold
             this.mined = true
+        }
+        if (this.mined){
             this.mine()
         }
     }
-    mine(){
+    mine = () => {
         this.mined = false
         //Pop a rock off!
-        this.totalOre = this.totalOre + 1 * this.oreMultiplier
-        this.currentOre = this.currentOre + 1 * this.oreMultiplier
-        console.log("You got some ore!", this.totalOre)
+        globals.add_ore(1 * this.oreMultiplier)
+        console.log("You got some ore!", globals.get_current_ore())
     }
 };
 
