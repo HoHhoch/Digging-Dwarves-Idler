@@ -11,18 +11,27 @@ class Mountain {
         this.src = src,
         this.alt = alt,
         this.totalClicks = totalClicks,
-        this.threshold = 10,
+        this.threshold = 100,
         this.clicks = clicks,
+        this.chip_progress = 0,
         this.mined = false,
         this.oreMultiplier = 1.0
     }
-    clicked = () =>{
-        this.clicks += 1
+    miner_click = (miner_strength = 0) =>{
+        this.chip_progress += miner_strength
+        console.log("The miners are busy!", this.chip_progress)
+        this.check_chip()
+    }
+    clicked = (click_strength = 0) =>{
+        this.clicks += 1 + click_strength
         this.totalClicks += 1
+        this.chip_progress += 1 + click_strength
         console.log("Clicked!", this.totalClicks)
-
-        if (this.clicks >= this.threshold){
-            this.clicks -= this.threshold
+        this.check_chip()
+    }
+    check_chip = () =>{
+        if (this.chip_progress >= this.threshold){
+            this.chip_progress -= this.threshold
             this.mined = true
         }
         if (this.mined){

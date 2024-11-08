@@ -3,12 +3,11 @@ import globals from "../components/data.js";
 
 // Replace the image with a canvas for actual development
 const template = `
-    <img src=${mountain.src} alt=${mountain.alt} class="True_Mountain"/>
+    <img src=${mountain.src} alt=${mountain.alt} id="True_Mountain"/>
 `;
 
-// document.getElementById("Current_Ore").innerHTML = "Current Ore: " + mountain.currentOre;
-
-export function set_building_view(){
+//Building views
+function set_building_view(){
 
     let article = document.createElement("article")
     article.innerHTML = template
@@ -16,15 +15,26 @@ export function set_building_view(){
     let mountain_table = document.body.querySelector(".Building_Wrapper")
     mountain_table.append(article)
 }
-export function set_ore_counter() {
-    let totalOre = document.getElementById("Current_Ore")
-    totalOre.innerHTML = globals.get_current_ore()
+function set_ore_counter() {
+    let total_ore = document.getElementById("Current_Ore")
+    total_ore.innerHTML = globals.get_current_ore()
 }
 
-export function set_miner_cost() {
+
+//Upgrade views
+function set_miner_cost() {
     document.getElementById("Miner_Cost").innerText = globals.get_miner_cost()
 }
 
+//Call everything for initial buildout
 set_building_view()
 set_ore_counter()
 set_miner_cost()
+
+
+//Used to update views in other scripts
+export {
+    set_miner_cost,
+    set_ore_counter,
+    set_building_view
+}

@@ -1,5 +1,5 @@
 import Miner from "./classes/Miner.js"
-import miner_list from "./miner_data.js"
+import miner from "./miner_data.js"
 
 // We'll want to read this from some type of save, like a json or something,
 // So the data doesn't get reset with the browser every time.
@@ -26,6 +26,10 @@ const globals = new class Globals{
         this.total_miners = 0,
         this.current_allowed_miners = 2,
         this.miner_cost = this.calculate_miner_cost()
+        this.prev_miner_cost = this.miner_cost
+    }
+    get_total_miners = () => {
+        return this.total_miners
     }
     get_total_ore = () => {
         return this.total_ore
@@ -49,9 +53,10 @@ const globals = new class Globals{
     }
     purchase_miner() {
         this.total_miners += 1
-        this.reduce_ore(this.get_miner_cost())
+        this.reduce_ore(this.miner_cost)
+        this.prev_miner_cost = this.miner_cost
         this.calculate_miner_cost()
-        miner_list.push(new Miner(1, "Bob"))
+        miner.add_miner("Bob")
     }
 }
 
