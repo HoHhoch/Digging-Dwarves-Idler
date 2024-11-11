@@ -7,7 +7,7 @@ let timeout = 10000
 let miner_interval = ''
 
 //Objects and custom events
-const true_mountain = document.getElementById("True_Mountain")
+const true_mountain = document.getElementById("Building_Canvas")
 const minerEvent = new MouseEvent("click", {
     message: "This is a miner event test!",
 });
@@ -43,21 +43,17 @@ const buyMiner = function () {
         console.log("Time adjusted:", adjust_time, "Total Miners:", globals.get_total_miners())
         if (globals.get_total_miners() == 1) {
             miner_interval = setInterval(mining_miners, adjust_time)
-            console.log("After creation: ", miner_interval)
         }
         else{
-            console.log("Before clearing: ", miner_interval)
             clearInterval(miner_interval)
-            console.log("After Clearing: ", miner_interval)
             miner_interval = setInterval(mining_miners, adjust_time)
-            console.log("After Creation: ", miner_interval)
         }
     }
 }
 
 //Event Listeners
 true_mountain.addEventListener("click", (event) => {
-    console.log(event)
+    // console.log(event)
     if (event.pointerType === "mouse"){
         mountainClick()
     }

@@ -3,56 +3,71 @@
     <head>
         <title>Dwarven Diggers</title>
         <script type="module" src="./components/classes/Mountain.js"></script>
-        <script type="moudle" src="./components/data.js"></script>
+        <script type="module" src="./components/data.js"></script>
         <script type="module" src="./templates/mountainView.js"></script>
         <script type="module" src="./components/events/addEvents.js"></script>
     </head>
     <body>
-        <div class="Div_Root">
-            <div class="Navigation_Bar">
-                <div class="N1"></div>
-                <div class="N2"></div>
-                <div class="N3"></div>
-                <div class="N4_Settings">
+        <div class="Wrapper">
+            <ul class="Navigation_Bar">
+                <li>
+                    <button class="Stats_Button" type="button" value="Stats">Stats</button>
+                </li>
+                <li>
                     <button class="Settings_Button" type="button" value="Settings">Settings</button>
-                </div>
-            </div>
+                </li>
+            </ul>
             <div id="Ore_Counter_Container">
-                <h1>Current Ore: <span id="Current_Ore"></span></h1>
+                <h1>Total Ores:</h1>
+                <ul>
+                    <li id="Ore_List">
+                        <p>Stone Ore: <span id="Stone_Ore"></span></p>
+                    </li>
+                </ul>
+            </div>            
+            <div id="Population_Counter_Container">
+                <h1>Current Population:</h1>
+                <ul>
+                    <li id="Population_List">
+                        <p>Dwarves: <span id="Dwarven_Pop">1</span></p>
+                    </li>
+                </ul>
             </div>
-            <div class="Building_Wrapper"></div>
-            <div class="Tags_Wrapper">
-                <div class="B1_Mountain">
-                    <button class="Mountain_Tag" 
-                            id="Mountain_Tag"
-                            type="button" 
-                            value="Mountain">Mountain
-                    </button>
-                </div>
-                <div class="B2_Blacksmith">
-                    <button class="Blacksmith_Tag"
-                            id="Blacksmith_Tag" 
-                            type="button" 
-                            value="Blacksmth">Blacksmith
-                    </button>
-                </div>
+            <canvas id="Building_Canvas" width="500" height="350" style="border:1px solid grey">Building Canvas</canvas>
                 <p>Building Tags go here.</p>
-            </div>
-            <div class="Village_Wrapper">
-                <p>Village View will go here.</p>
-            </div>
-            <div class="Upgrade_Wrapper">
-                <div class="Mountain_Upgrade_Wrapper">
-                    <div class="Mountain_Upgrades">
-                        <button class="Miner_Upgrade" 
+                <li id="Tag_List">
+                    <ul>
+                        <button class="Mountain_Tag" 
+                                id="Mountain_Tag"
                                 type="button" 
-                                value="Hire Miner"
-                                title="You don't have to mine by yourself anymore."
-                                id="Miner_Button">Hire Miner: <span id="Miner_Cost"></span>
+                                value="Mountain">Mountain
                         </button>
-                    </div>
-                </div>
-            </div>
+                    </ul>
+                    <ul>                    
+                        <button class="Blacksmith_Tag"
+                                id="Blacksmith_Tag" 
+                                type="button" 
+                                value="Blacksmth">Blacksmith
+                        </button>
+                    </ul>
+                </li>
+                <canvas id="Village_Canvas" width="500" height="350" style="border:1px solid grey">Village Canvas</canvas>
+                <aside id="Upgrade_Bar">
+                    <li id="Upgrade_List">
+                        Upgrade List
+                        <ul>
+                            <details>
+                                <summary>Mountain Upgrades</summary>
+                                <button class="Miner_Upgrade" 
+                                        type="button" 
+                                        value="Hire Miner"
+                                        title="You don't have to mine by yourself anymore."
+                                        id="Miner_Button">Hire Miner: <span id="Miner_Cost"></span>
+                                </button>
+                            </details>
+                        </ul>
+                    </li>
+                </aside>
         </div>
     </body>
 </html>
